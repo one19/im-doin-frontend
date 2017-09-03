@@ -75,6 +75,7 @@
     "preact-compat": "^3.16.0",
     "styled-components": "^2.1.1",
     "tinycolor2": "^1.4.1",
+    "trianglify": "^1.1.0",
     "valid-url": "^1.0.9",
     "webpack": "^3.3.0"
   }
