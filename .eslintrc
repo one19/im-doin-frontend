@@ -17,7 +17,8 @@
     "prettier/prettier": ["error", {
       "singleQuote": true,
     }],
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "react/require-default-props": "off"
   },
   "globals": {
     "document": "true",
