@@ -29,9 +29,7 @@ export default class App extends Component {
       <div>
         <AbsoluteCanvas id="trianglify" />
         <Background background={background} />
-        <H1>
-          {message}
-        </H1>
+        <H1>{message.replace(/(in)g(?![A-Za-z])/gi, "$1'")}</H1>
       </div>
     );
   }
