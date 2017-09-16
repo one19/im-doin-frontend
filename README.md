@@ -17,4 +17,3 @@ Shows a status of what you're doing! When using the npm package `im-doin` and pr
 * EVEN MORE DOCCOS! LET'S MAKE THIS DEAD SIMPLE FOR **ANYONE** DEV-Y TO DO
 * tests/ci/test&coverage badges
 * fix issue where trianglify canvas doesn't resize with window
-* (think about adding the possibility for the status message to be a link)

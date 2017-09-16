@@ -1,7 +1,9 @@
 import { h, Component } from 'preact';
 import styled from 'styled-components';
+import snarkdown from 'snarkdown';
 import Background from './background';
 import H1 from './h1';
+import { backgroundCSSGenerator } from '../utils';
 
 const AbsoluteCanvas = styled.canvas`
   position: fixed;
@@ -24,12 +26,16 @@ export default class App extends Component {
 
   render() {
     const { message = 'Loading...', background } = this.state;
+    const mdMessage = snarkdown(message.replace(/(in)g(?![A-Za-z])/gi, "$1'"));
+    const parsedBackground = backgroundCSSGenerator(background);
 
     return (
       <div>
         <AbsoluteCanvas id="trianglify" />
-        <Background background={background} />
-        <H1>{message.replace(/(in)g(?![A-Za-z])/gi, "$1'")}</H1>
+        <Background background={parsedBackground} />
+        <H1 background={parsedBackground}>
+          <div dangerouslySetInnerHTML={{ __html: mdMessage }} />
+        </H1>
       </div>
     );
   }

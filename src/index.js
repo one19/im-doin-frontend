@@ -9,6 +9,10 @@ injectGlobal`
     padding: 0;
     border: none;
   }
+  a {
+    color: inherit;
+    font-style: italic;
+  }
 `;
 
 render(<App />, document.querySelector('main'));
