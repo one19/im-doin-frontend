@@ -1,9 +1,8 @@
 import { h } from 'preact';
 import styled from 'styled-components';
-import { backgroundCSSGenerator } from '../utils';
 
 type Props = {
-  background?: string
+  background: string | Object
 };
 
 const HiddenBackground = styled.div`
@@ -22,10 +21,8 @@ const FullBackground = styled.div`
   ${p => p.background};
 `;
 
-export default (props: Props) => {
-  const background = backgroundCSSGenerator(props.background);
-
-  // if the background is something trianglified, put it on our canvas,
+export default ({ background }: Props) => {
+  // if the background is something trianglified(an object), put it on our canvas,
   // and hide the default background
   if (typeof background === 'object') {
     background.canvas(document.getElementById('trianglify'));
