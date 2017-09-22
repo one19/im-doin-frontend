@@ -23,7 +23,7 @@
   "globals": {
     "document": "true",
     "expect": "true",
-    "Firebase": "true",
+    "firebase": "true",
     "window": "true"
   }
 }

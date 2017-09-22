@@ -5,6 +5,15 @@ import Background from './background';
 import H1 from './h1';
 import { backgroundCSSGenerator } from '../utils';
 
+const config = {
+  apiKey: 'AIzaSyCfSoWWocJ9JY9empbh8uxsJGN6Kc9pWIk',
+  authDomain: 'glowing-heat-4029.firebaseapp.com',
+  databaseURL: 'https://glowing-heat-4029.firebaseio.com',
+  projectId: 'glowing-heat-4029',
+  storageBucket: 'glowing-heat-4029.appspot.com',
+  messagingSenderId: '299654116848'
+};
+
 const AbsoluteCanvas = styled.canvas`
   position: fixed;
   top: 0;
@@ -16,9 +25,8 @@ const AbsoluteCanvas = styled.canvas`
 
 export default class App extends Component {
   componentWillMount() {
-    this.firebaseRef = new Firebase(
-      'https://glowing-heat-4029.firebaseio.com/im-doin'
-    );
+    firebase.initializeApp(config);
+    this.firebaseRef = firebase.database().ref('im-doin');
     this.firebaseRef.on('value', dataSnapshot =>
       this.setState(dataSnapshot.val())
     );
