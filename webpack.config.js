@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'development';
 
@@ -18,6 +19,7 @@ const config = {
       {
         test: /\.jsx?/i,
         loader: 'babel-loader',
+        exclude: /node_modules/,
         options: {
           presets: ['env'],
           plugins: [['transform-react-jsx', { pragma: 'h' }]]
@@ -57,7 +59,13 @@ if (process.env.NODE_ENV === 'production') {
     new HtmlWebpackPlugin({
       inject: false,
       template: './src/index.html'
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/fonts',
+        to: 'fonts'
+      }
+    ])
   ];
 }
 

@@ -46,6 +46,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "chai": "^4.1.2",
+    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.6.0",
     "eslint-config-prettier": "^2.4.0",
