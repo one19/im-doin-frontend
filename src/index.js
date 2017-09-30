@@ -29,4 +29,4 @@ injectGlobal`
   }
 `;
 
-render(<App />, document.querySelector('main'));
+render(<App />, document.body, document.querySelector('main'));
