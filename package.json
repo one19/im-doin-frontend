@@ -72,6 +72,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "firebase": "^4.4.0",
     "html-webpack-plugin": "^2.30.1",
+    "node-emoji": "^1.8.1",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
     "snarkdown": "^1.2.2",

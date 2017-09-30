@@ -2,6 +2,7 @@
 import tc from 'tinycolor2';
 import validUrl from 'valid-url';
 import trianglify from 'trianglify';
+import { emojify } from 'node-emoji';
 import { COMPANY_COLORS, PROGRESSIVE_PUNCTS } from './constants';
 
 module.exports.backgroundCSSGenerator = (background: string) => {
@@ -30,6 +31,7 @@ module.exports.backgroundCSSGenerator = (background: string) => {
     .toString()}`;
 };
 
+const returnUnknown = name => name;
 const insertProgressivePunct = (text: string): string =>
   Object.keys(PROGRESSIVE_PUNCTS).reduce(
     (returnText, key) =>
@@ -52,5 +54,6 @@ module.exports.customTextParser = (text: string): string => {
   const imDoinIfied = text.replace(/(in)g(?![A-Za-z])/gi, "$1'");
   const withStrikethroughs = imDoinIfied.replace(/~~(.*)~~/, '<del>$1</del>');
   const withProgPunct = insertProgressivePunct(withStrikethroughs);
-  return withProgPunct;
+  const withEmojis = emojify(withProgPunct, returnUnknown);
+  return withEmojis;
 };
