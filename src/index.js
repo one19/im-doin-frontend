@@ -2,6 +2,9 @@ import { h, render } from 'preact';
 import { injectGlobal } from 'styled-components';
 import App from './components/app';
 
+// require our font config file to use all those nice icons
+require('./font');
+
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   @font-face {
@@ -9,12 +12,12 @@ injectGlobal`
     src:
       url('./fonts/progressive-punctuation.eot') format('embedded-opentype'),
       url('./fonts/progressive-punctuation.woff') format('woff'),
-      url('./fonts/progressive-punctuation.ttf') format('truetype'),
-      url('./fonts/progressive-punctuation.svg') format('svg');
+      url('./fonts/progressive-punctuation.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
   body {
+    font-family: 'helvetica';
     margin: 0;
     padding: 0;
     border: none;
