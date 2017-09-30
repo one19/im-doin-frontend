@@ -4,6 +4,8 @@ import firebase from 'firebase';
 import tc from 'tinycolor2';
 import snarkdown from 'snarkdown';
 import Background from './background';
+import Footer from './footer';
+import Header from './header';
 import H1 from './h1';
 import { backgroundCSSGenerator, customTextParser } from '../utils';
 
@@ -54,7 +56,11 @@ export default class App extends Component {
   }
 
   render() {
-    const { message = 'Loading...', background } = this.state;
+    const {
+      message = 'Loading...',
+      startTime = new Date(),
+      background
+    } = this.state;
     const mdMessage = snarkdown(customTextParser(message));
     const parsedBackground = backgroundCSSGenerator(background);
 
@@ -62,11 +68,13 @@ export default class App extends Component {
       <AppReadable background={parsedBackground}>
         <AbsoluteCanvas id="trianglify" />
         <Background background={parsedBackground} />
+        <Header />
         <H1>
           <div
             dangerouslySetInnerHTML={{ __html: customTextParser(mdMessage) }}
           />
         </H1>
+        <Footer startTime={startTime} background={background} />
       </AppReadable>
     );
   }
