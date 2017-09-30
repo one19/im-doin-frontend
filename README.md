@@ -11,9 +11,7 @@ Shows a status of what you're doing! When using the npm package `im-doin` and pr
 * Time since last update footer
 * social media footer
 * icon set
-* emoji parsing
 * bundle firebase libs
-* progressive punctuation
 * more custom filters for text/html
 * Button to request status update in *time-since* footer
 * break out db location into .env file
