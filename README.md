@@ -8,12 +8,7 @@ Shows a status of what you're doing! When using the npm package `im-doin` and pr
 ### TODO:
 *LOTS! THIS ISN'T READY FOR WIDE RELEASE:*
 * Resume footer
-* Time since last update footer
-* social media footer
-* icon set
 * bundle firebase libs
-* more custom filters for text/html
-* Button to request status update in *time-since* footer
 * break out db location into .env file
 * Bunch of svg/tiled emoji backgrounds
 * README DOCS
