@@ -18,6 +18,7 @@ const FullBackground = styled.div`
   margin: 0;
   padding: 0;
   border: none;
+  box-sizing: border-box;
   ${p => p.background};
 `;
 
