@@ -50,6 +50,23 @@ const insertProgressivePunct = (text: string): string =>
     text
   );
 
+module.exports.timeAgo = (date: ?string): string => {
+  const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+  const times = {
+    minute: 60,
+    hour: 60 * 60,
+    day: 60 * 60 * 24,
+    week: 60 * 60 * 24 * 7,
+    month: 60 * 60 * 24 * 30.4,
+    year: 60 * 60 * 24 * 365.25
+  };
+  return Object.keys(times).reduce((returnText, key) => {
+    const diff = Math.round(seconds / times[key]);
+    if (diff >= 1) return `${diff} ${key}${diff > 1 ? 's' : ''} ago`;
+    return returnText;
+  }, '1 second ago');
+};
+
 module.exports.customTextParser = (text: string): string => {
   const imDoinIfied = text.replace(/(in)g(?![A-Za-z])/gi, "$1'");
   const withStrikethroughs = imDoinIfied.replace(/~~(.*)~~/, '<del>$1</del>');
