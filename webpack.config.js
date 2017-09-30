@@ -24,6 +24,10 @@ const config = {
           presets: ['env'],
           plugins: [['transform-react-jsx', { pragma: 'h' }]]
         }
+      },
+      {
+        test: /src\/font\.js/,
+        use: ['style-loader', 'css-loader', 'webfonts-loader']
       }
     ]
   },
