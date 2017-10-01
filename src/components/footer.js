@@ -23,7 +23,7 @@ type Props = {
 export default ({ startTime, background = 'random' }: Props) => (
   <Footer>
     <small>
-      Time since last update: <strong>{timeAgo(startTime)}</strong>
+      Last updated: <strong>{timeAgo(startTime)}</strong>
     </small>
     <small>
       Background: <strong>{background}</strong>

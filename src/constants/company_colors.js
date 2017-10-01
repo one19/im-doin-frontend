@@ -6,6 +6,7 @@ module.exports.COMPANY_COLORS = {
   discord: ['#99aab5', '#7289da'],
   docker: ['#384d54', '#0db7ed'],
   facebook: '#3b5998',
+  firebase: ['ffcb2e', 'ffa610', 'f5820b'],
   gatech: ['#c59353', '#fff', '#eeb211', '#00254c'],
   hackernews: '#ff6600',
   hangouts: '#0f9d58',
