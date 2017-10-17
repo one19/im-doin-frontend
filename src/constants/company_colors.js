@@ -46,5 +46,6 @@ module.exports.COMPANY_COLORS = {
   tumblr: '#35465c',
   twitter: '#1da1f2',
   vue: ['#42b883', '#35495e'],
+  wework: ['#e9b258', '#252729'],
   wordpress: ['#464646', '#d54e21', '#21759b']
 };
