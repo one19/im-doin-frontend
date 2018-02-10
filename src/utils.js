@@ -38,13 +38,15 @@ const insertProgressivePunct = (text: string): string =>
       PROGRESSIVE_PUNCTS[key].alias.reduce((innerText, alia) => {
         const safeKey = alia.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 
-        let keyRegex = new RegExp(safeKey, 'ig');
-        if (alia.match(/\/[a-z]$/))
-          keyRegex = new RegExp(`[^<]/${alia[1]}`, 'ig');
-
+        const keyRegex = new RegExp(`${safeKey}[.,< \\]]`, 'ig');
         return innerText.replace(
           keyRegex,
-          `<a href="${PROGRESSIVE_PUNCTS[key].url}"><icon>${key}</icon></a>`
+          // it's more understandable this way
+          // eslint-disable-next-line
+          `<a href="${PROGRESSIVE_PUNCTS[key].url}"><icon>${key}</icon></a>${
+            (innerText.match(keyRegex) && innerText.match(keyRegex)[0].slice(-1) === ']')
+            ? ']'
+            : ''}`
         );
       }, returnText),
     text
