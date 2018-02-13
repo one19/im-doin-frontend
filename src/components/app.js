@@ -37,7 +37,7 @@ const AppReadable = styled.div`
     // return the most readable text color for the background
     if (isColor) {
       const color = tc.mostReadable(isColor[1], ['#fff', '#000']);
-      return `color: ${color}`;
+      return `color: ${color.toHexString()}`;
     }
 
     // default to white text for images/canvasses
