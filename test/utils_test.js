@@ -31,12 +31,12 @@ describe('utils', () => {
 
     it('wraps rgb colors', () =>
       expect(backgroundCSSGenerator('rgb(0, 0, 0)')).to.eql(
-        'background-color: rgb(0, 0, 0)'
+        'background-color: #000000'
       ));
 
     it('and rgba colors', () =>
       expect(backgroundCSSGenerator('rgba(119, 119, 225, 0.25)')).to.eql(
-        'background-color: rgba(119, 119, 225, 0.25)'
+        'background-color: #7777e1'
       ));
 
     it('trusts inputted urls to be background images', () =>

@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import styled from 'styled-components';
 import firebase from 'firebase/app';
 import 'firebase/database';
-import tc from 'tinycolor2';
+import { contrast } from 'chroma-js';
 import snarkdown from 'snarkdown';
 import Background from './background';
 import Footer from './footer';
@@ -18,6 +18,9 @@ const config = {
   storageBucket: 'glowing-heat-4029.appspot.com',
   messagingSenderId: '299654116848'
 };
+
+const blackOrWhite = color =>
+  contrast(color, '000') >= contrast(color, 'fff') ? '#000000' : '#ffffff';
 
 const AbsoluteCanvas = styled.canvas`
   position: fixed;
@@ -37,8 +40,7 @@ const AppReadable = styled.div`
 
     // return the most readable text color for the background
     if (isColor) {
-      const color = tc.mostReadable(isColor[1], ['#fff', '#000']);
-      return `color: ${color.toHexString()}`;
+      return `color: ${blackOrWhite(isColor[1])}`;
     }
 
     // default to white text for images/canvasses

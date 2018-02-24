@@ -1,9 +1,17 @@
 /* @flow */
-import tc from 'tinycolor2';
+import chroma from 'chroma-js';
 import validUrl from 'valid-url';
 import trianglify from 'trianglify';
 import { emojify } from 'node-emoji';
 import { COMPANY_COLORS, PROGRESSIVE_PUNCTS } from './constants';
+
+const isValid = color => {
+  try {
+    return chroma(color) && true;
+  } catch (_) {
+    return false;
+  }
+};
 
 module.exports.backgroundCSSGenerator = (background: string) => {
   if (Object.keys(COMPANY_COLORS).includes(background)) {
@@ -18,17 +26,18 @@ module.exports.backgroundCSSGenerator = (background: string) => {
           y_colors: COMPANY_COLORS[background]
         })
       : `background-color: ${COMPANY_COLORS[background]}`;
-  } else if (tc(background).isValid()) {
-    return `background-color: ${tc(background).toString()}`;
+  } else if (isValid(background)) {
+    return `background-color: ${chroma(background).hex()}`;
   } else if (validUrl.isUri(background)) {
     return `
       background-image: url("${background}");
       background-size: cover
     `;
   }
-  return `background-color: ${tc('palegoldenrod')
-    .spin(360 * Math.random())
-    .toString()}`;
+  const [, pastelSat, pastelLight] = chroma('palegoldenrod').hsl();
+  return `background-color: ${chroma
+    .hsl(360 * Math.random(), pastelSat, pastelLight)
+    .hex()}`;
 };
 
 const returnUnknown = name => name;
