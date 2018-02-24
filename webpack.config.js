@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 if (!process.env.NODE_ENV) process.env.NODE_ENV = 'development';
 
@@ -45,7 +46,8 @@ const config = {
       react: 'preact-compat',
       'react-dom': 'preact-compat'
     }
-  }
+  },
+  plugins: [new BundleAnalyzerPlugin()]
 };
 
 if (process.env.NODE_ENV === 'production') {

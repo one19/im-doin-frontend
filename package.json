@@ -66,6 +66,7 @@
     "style-loader": "^0.18.2",
     "version-changelog": "^2.1.0",
     "webfonts-loader": "^4.0.0",
+    "webpack-bundle-analyzer": "^2.10.1",
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
