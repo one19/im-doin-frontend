@@ -53,9 +53,11 @@ const insertProgressivePunct = (text: string): string =>
           // it's more understandable this way
           // eslint-disable-next-line
           `<a href="${PROGRESSIVE_PUNCTS[key].url}"><icon>${key}</icon></a>${
-            (innerText.match(keyRegex) && innerText.match(keyRegex)[0].slice(-1) === ']')
-            ? ']'
-            : ''}`
+            innerText.match(keyRegex) &&
+            innerText.match(keyRegex)[0].slice(-1) === ']'
+              ? ']'
+              : ''
+          }`
         );
       }, returnText),
     text

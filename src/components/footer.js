@@ -8,11 +8,8 @@ const Footer = styled.footer`
   bottom: 0;
   padding: 8px;
   display: flex;
-  color: inherit;
   box-sizing: border-box;
   justify-content: space-between;
-  -webkit-text-stroke: inherit;
-  -webkit-text-fill-color: inherit;
 `;
 
 type Props = {

@@ -16,6 +16,11 @@ injectGlobal`
     font-weight: normal;
     font-style: normal;
   }
+  * {
+    color: inherit;
+    -webkit-text-stroke: inherit;
+    -webkit-text-fill-color: inherit;
+  }
   body {
     font-family: 'helvetica';
     margin: 0;
@@ -23,7 +28,6 @@ injectGlobal`
     border: none;
   }
   a {
-    color: inherit;
     font-style: italic;
   }
   icon {

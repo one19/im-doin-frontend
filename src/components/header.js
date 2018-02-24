@@ -8,11 +8,8 @@ const Header = styled.header`
   width: 100%;
   padding: 8px;
   display: flex;
-  color: inherit;
-  box-sizing: border-box;
   justify-content: center;
-  -webkit-text-stroke: inherit;
-  -webkit-text-fill-color: inherit;
+  box-sizing: border-box;
   a {
     text-decoration: none;
   }

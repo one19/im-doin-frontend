@@ -7,8 +7,8 @@ type Props = {
 
 const HiddenBackground = styled.div`
   width: 0;
-  height 0;
-  margin 0;
+  height: 0;
+  margin: 0;
   padding: 0;
   display: none;
 `;
