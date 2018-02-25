@@ -8,7 +8,7 @@ Shows a status of what you're doing! When using the npm package `im-doin` and pr
 ### TODO:
 *LOTS! THIS ISN'T READY FOR WIDE RELEASE:*
 * Resume footer
-* bundle firebase libs
+* probably switch back to React, depending on final bundle size
 * break out db location into .env file
 * Bunch of svg/tiled emoji backgrounds
 * README DOCS
