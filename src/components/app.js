@@ -31,8 +31,8 @@ const AbsoluteCanvas = styled.canvas`
   overflow: auto;
 `;
 const AppReadable = styled.div`
-  -webkit-text-stroke: unset;
-  -webkit-text-fill-color: unset;
+  -webkit-text-stroke: initial;
+  -webkit-text-fill-color: initial;
   ${p => {
     const isColor =
       typeof p.background === 'string' &&
