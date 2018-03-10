@@ -47,7 +47,7 @@ const insertProgressivePunct = (text: string): string =>
       PROGRESSIVE_PUNCTS[key].alias.reduce((innerText, alia) => {
         const safeKey = alia.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 
-        const keyRegex = new RegExp(`${safeKey}[.,< \\]]`, 'ig');
+        const keyRegex = new RegExp(`${safeKey}([.,< \\]]|$)`, 'ig');
         return innerText.replace(
           keyRegex,
           // it's more understandable this way

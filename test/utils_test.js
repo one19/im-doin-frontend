@@ -68,5 +68,11 @@ describe('utils', () => {
         '[This is the right path<a href="http://progressivepunctuation.com/mark/#doubt"><icon>&#57348;</icon></a>](www.elgoog.com)'
       );
     });
+
+    it('still allows progressive punctuation as a line ender', () => {
+      expect(customTextParser('This is a great test/s')).to.eql(
+        'This is a great test<a href="http://progressivepunctuation.com/mark/#sarcmark"><icon>&#57357;</icon></a>'
+      );
+    });
   });
 });
