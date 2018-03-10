@@ -14,7 +14,9 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
+      "npm run build",
+      "git add docs",
+      "npm run lint",
       "git add"
     ]
   },
