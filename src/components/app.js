@@ -62,7 +62,8 @@ export default class App extends Component {
     const {
       message = 'Loading...',
       startTime = new Date(),
-      background
+      background,
+      textColor
     } = this.state;
     const mdMessage = snarkdown(customTextParser(message));
     const parsedBackground = backgroundCSSGenerator(background);
@@ -72,7 +73,7 @@ export default class App extends Component {
         <AbsoluteCanvas id="trianglify" />
         <Background background={parsedBackground} />
         <Header />
-        <H1>
+        <H1 textColor={textColor}>
           <div
             dangerouslySetInnerHTML={{ __html: customTextParser(mdMessage) }}
           />
