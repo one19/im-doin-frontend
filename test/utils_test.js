@@ -59,25 +59,52 @@ describe('utils', () => {
     });
   });
   describe('customTextParser(text)', () => {
-    it('works with urls containing progressive punctuation matches', () => {
-      // the following url will match progressive punctuation marks, but they're in the url
-      const url =
-        "[3d designin' the next thin' after this one](https://twitter.com/Werd_119/status/959998119118225408)";
-      expect(customTextParser(url)).to.eql(url);
+    describe('folksifier', () => {
+      it('folksifies the text', () => {
+        expect(customTextParser('Doing stuff!')).to.eql("Doin' stuff!");
+        expect(customTextParser('Thinking')).to.eql("Thinkin'");
+        expect(customTextParser('Thinking.')).to.eql("Thinkin'.");
+      });
+
+      it("doesn't folksify inside innapropriate places", () => {
+        expect(customTextParser(':lying_face:')).to.eql('🤥');
+        expect(customTextParser('Whinging it!')).to.eql("Whingin' it!");
+        expect(customTextParser('Ming vase. Sing!')).to.eql('Ming vase. Sing!');
+      });
     });
 
-    it('still allows progressive punctuation in normal situations', () => {
-      expect(
-        customTextParser('[This is the right path/.?](www.elgoog.com)')
-      ).to.eql(
-        '[This is the right path<a href="http://progressivepunctuation.com/mark/#doubt"><icon>&#57348;</icon></a>](www.elgoog.com)'
-      );
+    describe('emojifier', () => {
+      it("doesn't explode emojis with multiple underscores", () => {
+        expect(customTextParser(':shallow_pan_of_food:')).to.eql('🥘');
+      });
+      it('gracefully handles totally-not-emojis', () => {
+        expect(['🐞', '🦋', '🐛', '🐝', '🐜', '🦗', '🕷']).to.include(
+          customTextParser(':this_is_a_freakish_bad_emoji:')
+        );
+      });
     });
 
-    it('still allows progressive punctuation as a line ender', () => {
-      expect(customTextParser('This is a great test/s')).to.eql(
-        'This is a great test<a href="http://progressivepunctuation.com/mark/#sarcmark"><icon>&#57357;</icon></a>'
-      );
+    describe('prog-punctualizer', () => {
+      it('works with urls containing progressive punctuation matches', () => {
+        // the following url will match progressive punctuation marks, but they're in the url
+        const url =
+          "[3d designin' the next thin' after this one](https://twitter.com/Werd_119/status/959998119118225408)";
+        expect(customTextParser(url)).to.eql(url);
+      });
+
+      it('still allows progressive punctuation in normal situations', () => {
+        expect(
+          customTextParser('[This is the right path/.?](www.elgoog.com)')
+        ).to.eql(
+          '[This is the right path<a href="http://progressivepunctuation.com/mark/#doubt"><icon>&#57348;</icon></a>](www.elgoog.com)'
+        );
+      });
+
+      it('still allows progressive punctuation as a line ender', () => {
+        expect(customTextParser('This is a great test/s')).to.eql(
+          'This is a great test<a href="http://progressivepunctuation.com/mark/#sarcmark"><icon>&#57357;</icon></a>'
+        );
+      });
     });
   });
 });

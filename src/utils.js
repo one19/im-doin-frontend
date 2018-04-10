@@ -2,7 +2,7 @@
 import chroma from 'chroma-js';
 import validUrl from 'valid-url';
 import trianglify from 'trianglify';
-import { emojify } from 'node-emoji';
+import { lib as emojilib } from 'emojilib';
 import { COMPANY_COLORS, PROGRESSIVE_PUNCTS } from './constants';
 
 const isValid = color => {
@@ -11,6 +11,25 @@ const isValid = color => {
   } catch (_) {
     return false;
   }
+};
+
+const emojify = message => {
+  const bugs = [
+    'bug',
+    'butterfly',
+    'beetle',
+    'ant',
+    'grasshopper',
+    'spider',
+    'honeybee'
+  ];
+  const emojiRe = /:([a-z0-9_-]+):/gi;
+  return message.replace(emojiRe, emojiAttempt => {
+    const match = emojilib[emojiAttempt.replace(/:/g, '')];
+    return match
+      ? match.char
+      : emojilib[bugs[Math.floor(Math.random() * bugs.length)]].char;
+  });
 };
 
 module.exports.backgroundCSSGenerator = (background: string) => {
@@ -41,7 +60,6 @@ module.exports.backgroundCSSGenerator = (background: string) => {
     .hex()}`;
 };
 
-const returnUnknown = name => name;
 const insertProgressivePunct = (text: string): string =>
   Object.keys(PROGRESSIVE_PUNCTS).reduce(
     (returnText, key) =>
@@ -82,9 +100,12 @@ module.exports.timeAgo = (date: ?string): string => {
 };
 
 module.exports.customTextParser = (text: string): string => {
-  const imDoinIfied = text.replace(/(in)g(?![A-Za-z])/gi, "$1'");
+  const imDoinIfied = text.replace(
+    /(^|[ _-]+)([a-z]{2,}in)g([ :;!?.,_]+|$)/gi,
+    "$1$2'$3"
+  );
   const withStrikethroughs = imDoinIfied.replace(/~~(.*)~~/, '<del>$1</del>');
   const withProgPunct = insertProgressivePunct(withStrikethroughs);
-  const withEmojis = emojify(withProgPunct, returnUnknown);
+  const withEmojis = emojify(withProgPunct);
   return withEmojis;
 };

@@ -5,6 +5,7 @@
 * swapped Preact for React!
 * upgraded dependencies
 * patched background parser
+* make emoji parsing more humane, and enable **all** emojis
 
 ### Added
 * Project setup linting/prettier/changelog
