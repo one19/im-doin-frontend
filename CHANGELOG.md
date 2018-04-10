@@ -4,6 +4,7 @@
 ### Changed
 * swapped Preact for React!
 * upgraded dependencies
+* patched background parser
 
 ### Added
 * Project setup linting/prettier/changelog

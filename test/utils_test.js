@@ -12,6 +12,11 @@ describe('utils', () => {
         'background-color: #00d8ff'
       ));
 
+    it('refuses to break if you get nuts with the caps in brands', () =>
+      expect(backgroundCSSGenerator('ShortLyStEr')).to.eql(
+        'background-color: #203d57'
+      ));
+
     it('does semi-smart trianglify stuff to multi-color brands', () => {
       const trianglifiedGatech = backgroundCSSGenerator('gatech');
       expect(trianglifiedGatech.opts).to.include({

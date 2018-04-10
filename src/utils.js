@@ -14,20 +14,21 @@ const isValid = color => {
 };
 
 module.exports.backgroundCSSGenerator = (background: string) => {
-  if (Object.keys(COMPANY_COLORS).includes(background)) {
-    return Array.isArray(COMPANY_COLORS[background])
+  const downCasedBackground = background.toLowerCase();
+  if (Object.keys(COMPANY_COLORS).includes(downCasedBackground)) {
+    return Array.isArray(COMPANY_COLORS[downCasedBackground])
       ? trianglify({
           seed: 'one19',
           variance: 0.5,
           cell_size: 45,
           width: window.innerWidth,
           height: window.innerHeight,
-          x_colors: COMPANY_COLORS[background],
-          y_colors: COMPANY_COLORS[background]
+          x_colors: COMPANY_COLORS[downCasedBackground],
+          y_colors: COMPANY_COLORS[downCasedBackground]
         })
-      : `background-color: ${COMPANY_COLORS[background]}`;
+      : `background-color: ${COMPANY_COLORS[downCasedBackground]}`;
   } else if (isValid(background)) {
-    return `background-color: ${chroma(background).hex()}`;
+    return `background-color: ${chroma(downCasedBackground).hex()}`;
   } else if (validUrl.isUri(background)) {
     return `
       background-image: url("${background}");
