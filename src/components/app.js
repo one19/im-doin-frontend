@@ -51,7 +51,7 @@ const AppReadable = styled.div`
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { message: 'Loading...', startTime: new Date() }
+    this.state = { message: 'Loading...', startTime: new Date() };
   }
 
   componentWillMount() {
@@ -61,12 +61,13 @@ export default class App extends React.Component {
 
     this.firebaseRef = firebase.database().ref('im-doin');
     this.firebaseRef.on('value', dataSnapshot => {
-      this.setState(dataSnapshot.val())
+      this.setState(dataSnapshot.val());
     });
   }
 
   render() {
     const { message, startTime, background, textColor } = this.state;
+
     const mdMessage = snarkdown(customTextParser(message));
     const parsedBackground = backgroundCSSGenerator(background);
 
