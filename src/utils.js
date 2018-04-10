@@ -32,7 +32,7 @@ const emojify = message => {
   });
 };
 
-module.exports.backgroundCSSGenerator = (background: string) => {
+module.exports.backgroundCSSGenerator = (background = '') => {
   const downCasedBackground = background.toLowerCase();
   if (Object.keys(COMPANY_COLORS).includes(downCasedBackground)) {
     return Array.isArray(COMPANY_COLORS[downCasedBackground])
