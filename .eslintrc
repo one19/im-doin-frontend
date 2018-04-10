@@ -8,11 +8,6 @@
     "react",
     "prettier"
   ],
-  "settings": {
-    "react": {
-      "pragma": "h"
-    }
-  },
   "rules": {
     "prettier/prettier": ["error", {
       "singleQuote": true,
@@ -24,6 +19,7 @@
     "document": "true",
     "expect": "true",
     "firebase": "true",
-    "window": "true"
+    "window": "true",
+    "React": "true"
   }
 }

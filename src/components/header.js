@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import styled from 'styled-components';
 import config from '../config';
 
@@ -27,7 +26,7 @@ const GlobIcon = styled.i`
 export default () => (
   <Header>
     {Object.keys(config).map(key => (
-      <a href={config[key]}>
+      <a href={config[key]} key={`${key}`}>
         <GlobIcon className={`glob glob-${key}`} />
       </a>
     ))}

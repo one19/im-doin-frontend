@@ -3,7 +3,7 @@
   "plugins": [
     "styled-components",
     "transform-flow-strip-types",
-    ["transform-react-jsx", { "pragma": "h" }],
+    "transform-react-jsx",
     ["module-resolver", {
       "root": ["./src"],
       "alias": {

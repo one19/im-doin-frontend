@@ -1,4 +1,4 @@
-import { h, render } from 'preact';
+import { render } from 'react-dom';
 import { injectGlobal } from 'styled-components';
 import App from './components/app';
 
@@ -36,4 +36,4 @@ injectGlobal`
   }
 `;
 
-render(<App />, document.body, document.querySelector('main'));
+render(<App />, document.getElementById('app'));

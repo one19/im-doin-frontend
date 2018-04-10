@@ -25,7 +25,7 @@
     "url": "git+ssh://git@github.com/one19/im-doin-frontend.git"
   },
   "keywords": [
-    "preact",
+    "react",
     "webpack"
   ],
   "author": "Drew Showalter <maelstroswim@gmail.com>",
@@ -65,6 +65,7 @@
     "mocha": "^3.5.0",
     "nock": "^9.0.14",
     "prettier": "^1.6.1",
+    "react-dom": "^16.3.1",
     "style-loader": "^0.18.2",
     "version-changelog": "^2.1.0",
     "webfonts-loader": "^4.0.0",
@@ -78,8 +79,7 @@
     "firebase": "^4.4.0",
     "html-webpack-plugin": "^2.30.1",
     "node-emoji": "^1.8.1",
-    "preact": "^8.2.5",
-    "preact-compat": "^3.17.0",
+    "react": "^16.3.1",
     "snarkdown": "^1.2.2",
     "styled-components": "^2.1.2",
     "trianglify": "^1.1.0",

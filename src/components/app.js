@@ -1,4 +1,3 @@
-import { h, Component } from 'preact';
 import styled from 'styled-components';
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -49,22 +48,25 @@ const AppReadable = styled.div`
   }};
 `;
 
-export default class App extends Component {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { message: 'Loading...', startTime: new Date() }
+  }
+
   componentWillMount() {
-    firebase.initializeApp(config);
+    if (firebase.apps.length < 1) {
+      firebase.initializeApp(config);
+    }
+
     this.firebaseRef = firebase.database().ref('im-doin');
-    this.firebaseRef.on('value', dataSnapshot =>
+    this.firebaseRef.on('value', dataSnapshot => {
       this.setState(dataSnapshot.val())
-    );
+    });
   }
 
   render() {
-    const {
-      message = 'Loading...',
-      startTime = new Date(),
-      background,
-      textColor
-    } = this.state;
+    const { message, startTime, background, textColor } = this.state;
     const mdMessage = snarkdown(customTextParser(message));
     const parsedBackground = backgroundCSSGenerator(background);
 
