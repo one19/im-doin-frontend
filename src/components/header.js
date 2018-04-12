@@ -26,7 +26,7 @@ const GlobIcon = styled.i`
 export default () => (
   <Header>
     {Object.keys(config).map(key => (
-      <a href={config[key]} key={`${key}`}>
+      <a href={config[key]} key={`${key}`} aria-label={`Link to ${key}:`}>
         <GlobIcon className={`glob glob-${key}`} />
       </a>
     ))}
