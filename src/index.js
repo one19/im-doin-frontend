@@ -34,6 +34,9 @@ injectGlobal`
     font-style: normal;
     font-family: 'ProgressivePunctuation';
   }
+  small {
+    font-size: 16px;
+  }
 `;
 
 render(<App />, document.getElementById('app'));
