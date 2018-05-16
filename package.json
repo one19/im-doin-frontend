@@ -9,7 +9,9 @@
     "test": "NODE_ENV=test mocha",
     "lint": "eslint --fix .",
     "prepush": "yarn test && yarn lint",
-    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md"
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -92,6 +94,8 @@
     "styled-components": "^2.1.2",
     "trianglify": "^1.1.0",
     "valid-url": "^1.0.9",
-    "webpack": "^3.5.5"
-  }
+    "webpack": "^3.5.5",
+    "snyk": "^1.80.1"
+  },
+  "snyk": true
 }
